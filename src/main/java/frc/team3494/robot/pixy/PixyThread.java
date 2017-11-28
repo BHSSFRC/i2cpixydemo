@@ -27,6 +27,7 @@ public class PixyThread implements Runnable {
             } else {
                 PixyPacket packet = rawToPacket(raw);
                 if (packet != null) {
+                    System.out.format("PixyThread X value at %d: " + packet.x + "\n", System.currentTimeMillis());
                     Robot.aRef.set(packet);
                 }
             }

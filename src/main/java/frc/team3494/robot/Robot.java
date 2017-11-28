@@ -39,6 +39,7 @@ public class Robot extends IterativeRobot {
 
     @Override
     public void disabledPeriodic() {
+        SmartDashboard.putBoolean("Pixy alive", vision.pixy2.thread.isAlive());
     }
 
     @Override
@@ -47,10 +48,10 @@ public class Robot extends IterativeRobot {
 
         PixyPacket p = aRef.get();
         if (p == null) {
-            System.out.println("null packet");
             return;
         }
         SmartDashboard.putNumber("Pixy X (atomic)", p.x);
+        System.out.format("Pixy X (atomic) at %d: " + p.x + "\n", System.currentTimeMillis());
         SmartDashboard.putNumber("Pixy Y (atomic)", p.y);
         SmartDashboard.putNumber("Pixy width (atomic)", p.width);
         SmartDashboard.putNumber("Pixy height (atomic)", p.height);
